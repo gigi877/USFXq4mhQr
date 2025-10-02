@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#009765">
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="UNICO Campania" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>ABB. UNICO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Palette overrides */
+    .unico-topbar { background: #009765 !important; }
+    .content.unico { background: #009765 !important; }
+    .unico-banner { background: #009765 !important; }
+    .unico-bottom-fill { background: #009765 !important; }
+
+    .btn.secondary { background: #0a49b0 !important; }
+    .val-footer .time, .val-footer .locks { color: #003366 !important; }
+    .val-footer .time svg *, .val-footer .locks svg * { stroke: #0a49b0 !important; }
+
+    /* Remove space between divider and Dettagli */
+    .unico-details { margin-top: 0 !important; }
+
+    /* Bottom button layout: icon left, label centered */
+    .unico-bottombar .btn.secondary { position: relative; }
+    .unico-bottombar .btn.secondary svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); }
+    .unico-bottombar .btn.secondary .btn-label { position: absolute; left: 50%; transform: translateX(-50%); pointer-events: none; }
+    /* Make the bottom button taller */
+    .unico-bottombar .btn.secondary { padding-top: 20px; padding-bottom: 20px; margin-bottom: 6px; }
+
+    /* Reduce gap between validation panel and triangles (second accordion body) */
+    .unico-card > details.unico-acc:nth-of-type(2) .acc-body { padding-bottom: 8px !important; }
+
+    /* Speed up triangles */
+    .triangles .tri-row { animation-duration: 0.7s !important; }
+
+    /* Ticket info section styles */
+    .ticket-info-section {
+      background: #fff;
+      border-radius: 10px;
+      margin-top: 10px;
+      padding: 14px 0;
+    }
+    
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .info-item.cost-item {
+      border-bottom: 1px solid #e0e0e0;
+      margin-bottom: 8px;
+    }
+    
+    .info-label {
+      color: #6b6b6b;
+      font-size: 14px;
+      font-weight: 400;
+    }
+    
+    .info-value {
+      color: #1a1a1a;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .cost-value {
+      font-weight: 800;
+      font-size: 16px;
+    }
+    
+    .details-section {
+      margin-top: 12px;
+    }
+    
+    .details-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+    
+    .details-label {
+      color: #1a1a1a;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .details-toggle {
+      background: transparent;
+      border: 0;
+      color: #0a49b0;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+    }
+    
+    .chevron {
+      transition: transform 0.2s ease;
+    }
+
+    .details-section.open .chevron {
+      transform: rotate(180deg);
+    }
+    
+    .company-info {
+      background: #f8f9fa;
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 12px;
+      text-align: center;
+    }
+    
+    .company-name {
+      font-weight: 800;
+      font-size: 14px;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+    
+    .company-address {
+      font-size: 13px;
+      color: #6b6b6b;
+      margin-bottom: 4px;
+    }
+    
+    .company-vat {
+      font-size: 13px;
+      color: #6b6b6b;
+    }
+    
+    .ticket-codes {
+      margin-top: 16px;
+    }
+    
+    .code-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0;
+    }
+    
+    .code-label {
+      color: #6b6b6b;
+      font-size: 14px;
+    }
+    
+    .code-value {
+      color: #1a1a1a;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* Mobile optimizations for iPhone 13 Pro and similar */
+    @media screen and (max-width: 428px) {
+      /* La rimozione di queste classi è gestita dal CSS generale in styles.css */
+      /* .content.unico {
+        bottom: calc(60px + var(--safe-bottom)) !important;
+      } */
+      
+      .unico-card {
+        margin: 12px;
+        padding: 12px;
+      }
+
+      .unico-card-header {
+        padding: 12px 0;
+      }
+
+      .unico-logo-img {
+        width: 40px;
+      }
+      
+      .unico-title .line1 {
+        font-size: 15px;
+        line-height: 1.3;
+      }
+      
+      .unico-title .line2 {
+        font-size: 12px;
+        line-height: 1.2;
+      }
+      
+      .qr-box {
+        width: 160px;
+        height: 160px;
+      }
+      
+      .ticket-info-section {
+        padding: 12px 0;
+        margin: 8px 0;
+      }
+      
+      .info-item {
+        padding: 6px 0;
+      }
+      
+      .info-label, .info-value {
+        font-size: 14px;
+      }
+      
+      .cost-value {
+        font-size: 16px;
+      }
+      
+      .company-info {
+        padding: 12px;
+        margin-top: 8px;
+      }
+      
+      .company-name {
+        font-size: 14px;
+      }
+      
+      .company-address, .company-vat {
+        font-size: 13px;
+      }
+      
+      .code-label, .code-value {
+        font-size: 14px;
+      }
+      
+      .unico-bottombar .btn.secondary {
+        width: calc(100% - 16px);
+        margin-bottom: 2px;
+        padding: 14px 16px;
+      }
+      
+      /* La rimozione di queste classi è gestita dal CSS generale in styles.css */
+      /* .unico-bottombar {
+        height: calc(60px + var(--safe-bottom)) !important;
+        padding-bottom: calc(var(--safe-bottom) + 4px) !important;
+      } */
+    }
+
+    /* Touch optimizations */
+    @media (hover: none) and (pointer: coarse) {
+      .details-toggle {
+        min-height: 44px;
+        padding: 8px;
+      }
+      
+      .icon-btn {
+        min-height: 44px;
+        min-width: 44px;
+      }
+      
+      .unico-bottombar .btn.secondary {
+        min-height: 48px;
+      }
+    }
+
+    /* Safe area adjustments for iPhone notch */
+    @supports (padding: max(0px)) {
+      .unico-topbar {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      
+      .unico-card {
+        margin-left: max(16px, env(safe-area-inset-left));
+        margin-right: max(16px, env(safe-area-inset-right));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      
+      .unico-bottombar {
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+    }
+
+    /* Font size increases for better readability */
+    .unico-title .line1 {
+      font-size: 16px !important;
+      line-height: 1.4;
+    }
+    
+    .unico-title .line2 {
+      font-size: 13px !important;
+      line-height: 1.3;
+    }
+    
+    .route {
+      font-size: 16px !important;
+    }
+    
+    .valid {
+      font-size: 14px !important;
+    }
+    
+    .info-label {
+      font-size: 15px !important;
+    }
+    
+    .info-value {
+      font-size: 15px !important;
+    }
+    
+    .cost-value {
+      font-size: 18px !important;
+    }
+    
+    .details-label {
+      font-size: 15px !important;
+    }
+    
+    .details-toggle {
+      font-size: 15px !important;
+    }
+    
+    .company-name {
+      font-size: 15px !important;
+    }
+    
+    .company-address, .company-vat {
+      font-size: 14px !important;
+    }
+    
+    .code-label {
+      font-size: 15px !important;
+    }
+    
+    .code-value {
+      font-size: 15px !important;
+    }
+    
+    .val-footer .time, .val-footer .locks {
+      font-size: 14px !important;
+    }
+    
+    .unico-bottombar .btn.secondary .btn-label {
+      font-size: 16px !important;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body onselectstart="return false;" ondragstart="return false;">
+  <div class="app-frame">
+    <header class="unico-topbar">
+      <button class="icon-btn back" onclick="window.location.href='tickets.html'" aria-label="Indietro">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="title">Ticket attivo</div>
+      <div class="spacer"></div>
+    </header>
+
+    <main class="content unico">
+      <div class="unico-card">
+        <div class="unico-card-header">
+          <img class="unico-logo-img" src="unicoC.png" alt="UNICO" />
+          <div class="unico-title">
+            <div class="line1">ABB.STU- INT. UNICOCAMPANIA</div>
+            <div class="line2">ABB INTEGRATO STUDENTI REGIONE CAMPANIA TIC-SG-NA20-00</div>
+          </div>
+        </div>
+
+        <details class="unico-acc" open>
+          <summary><span class="sicon">
+            <img class="sicon-img" src="id-card.png" alt="Informazioni tessera" />
+          </span><span class="slabel">Informazioni tessera</span></summary>
+          <div class="acc-body">
+            <div class="id-card">
+              <img class="avatar-img" src="IMG_2110.jpg" alt="Foto tessera" />
+              <div class="id-lines">
+                <div class="id-name" style="font-size:12px">ALESSIO DEL SORBO</div>
+                <div class="id-cf">DLSLSS04S25I234Y</div>
+                <div class="sep"></div>
+                <div class="id-field">
+                  <div class="label">Tesserino n.</div>
+                  <div class="value strong">2000718932</div>
+                </div>
+                <div class="id-field">
+                  <div class="label">Scadenza</div>
+                  <div class="value">31/07/2026</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="unico-acc" open>
+          <summary><span class="sicon">
+            <img class="sicon-img" src="ticket.png" alt="Controllo e validazione" />
+          </span><span class="slabel">Controllo e validazione</span></summary>
+          <div class="acc-body">
+            <div class="validation-panel">
+              <div class="qr-box">
+                <img src="Immagine_condivisa-removebg-preview.png" alt="QR di validazione" />
+              </div>
+              <div class="val-footer">
+                <div class="time">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#4a4a4a" stroke-width="1.8"/><path d="M12 7v6l4 2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <span id="unico-time" style="font-weight: 700;">09:53:10</span>
+                </div>
+                <div class="locks">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10" width="14" height="10" rx="2" stroke="#4a4a4a" stroke-width="1.8"/><path d="M8 10V8a4 4 0 1 1 8 0v2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <span style="font-weight: 700;">747</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <div class="triangles" aria-hidden="true">
+          <div class="tri-row r1"></div>
+          <div class="tri-row r2"></div>
+          <div class="tri-row r3"></div>
+        </div>
+
+        <div class="unico-banner">
+          <div class="route">Da <strong>SANTA MARIA CAPUA VETERE</strong> a <strong>FISCIANO</strong></div>
+          <div class="valid">Valido dal <strong>19/09/2025</strong> a <strong>01/08/2026</strong></div>
+        </div>
+        
+        <div class="ticket-info-section">
+          <div class="info-item">
+            <div class="info-label">Emesso il:</div>
+            <div class="info-value">19/09/2025 - 18:59</div>
+          </div>
+          
+          <div class="info-item cost-item">
+            <div class="info-label">Costo</div>
+            <div class="info-value cost-value">0,00 €</div>
+          </div>
+          
+          <div class="details-section">
+            <div class="details-header">
+              <div class="details-label">Dettagli</div>
+              <button class="details-toggle" id="details-toggle" type="button">
+                Leggi tutto
+                <svg class="chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+            </div>
+
+            <div class="company-info" hidden>
+              <div class="company-details">
+                <div class="company-name">AIRCAMPANIA S.R.L.</div>
+                <div class="company-address">Via Fasano ZI loc. Pianodardine</div>
+                <div class="company-vat">P.Iva: 02977850649</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="ticket-codes">
+            <div class="code-row">
+              <div class="code-label">Codice Ticket:</div>
+              <div class="code-value">2000W/2759053</div>
+            </div>
+            <div class="code-row">
+              <div class="code-label">PNR:</div>
+              <div class="code-value">GLPU87YKAG</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="unico-bottombar">
+      <button class="btn secondary" type="button">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 3L3 10.5l7.5 3 3 7.5L21 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+        <span class="btn-label">Trasferisci ticket</span>
+      </button>
+    </div>
+
+  <script>
+    (function(){
+      function pad(n){return n<10?'0'+n:''+n}
+      function tick(){
+        var el = document.getElementById('unico-time');
+        var d = new Date();
+        el.textContent = pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());
+        el.style.fontWeight = '700'; // Mantieni grassetto
+      }
+      tick();
+      window.unicoClock && clearInterval(window.unicoClock);
+      window.unicoClock = setInterval(tick, 1000);
+
+      // Toggle 'Leggi tutto' details panel
+      var btn = document.getElementById('details-toggle');
+      if (btn) {
+        btn.addEventListener('click', function(){
+          var detailsSection = btn.closest('.details-section');
+          var companyInfo = detailsSection.querySelector('.company-info');
+          
+          detailsSection.classList.toggle('open');
+          
+          if (detailsSection.classList.contains('open')) {
+            companyInfo && companyInfo.removeAttribute('hidden');
+          } else {
+            companyInfo && companyInfo.setAttribute('hidden','');
+          }
+        });
+      }
+
+      // Prevent text selection with JavaScript
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+      document.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+      });
+      
+
+
+      // Prevent copy/paste keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
+          e.preventDefault();
+          return false;
+        }
+        if (e.metaKey && (e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 86 || e.keyCode === 88)) {
+          e.preventDefault();
+          return false;
+        }
+      });
+    })();
+
+  </script>
+
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(() => console.log('Service Worker registrato'))
+                    .catch((err) => console.error('SW error:', err));
+            }
+        </script>
+    </main>
+</body>
+</html>
