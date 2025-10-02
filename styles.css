@@ -24,7 +24,7 @@ html, body {
 }
 body {
   margin: 0;
-  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
   font-size: 14px; /* slightly smaller base size */
   background: #fff;
   color: #222;
@@ -142,7 +142,7 @@ body {
 .row { display:flex; justify-content: space-between; align-items: flex-start; gap: 8px; padding: 12px 0; border-bottom: 1px solid #efefef; }
 .label { color:#8a8a8a; font-size: 12px; }
 .value { color:#1f1f1f; font-weight: 500; margin-left: auto; text-align: right; max-width: 60%; white-space: normal; word-break: break-word; }
-.value.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; letter-spacing: 0.3px; white-space: nowrap; }
+.value.mono { font-family: 'Rubik', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; letter-spacing: 0.3px; white-space: nowrap; }
 
 /* Bottom tab bar */
 .tabbar {
@@ -210,13 +210,13 @@ body {
 .content.unico { scrollbar-width: none; }
 .content.unico::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
-.unico-card { margin: 16px; background: #ffffff; border-radius: 14px; padding: 16px; box-shadow: none; border: 0; }
+.unico-card { margin: 16px; background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: none; border: 0; }
 .unico-card-header { background:#fff; border-radius: 10px; padding: 12px 0; position: relative; display:block; box-shadow: none; border: 0; }
-.unico-logo-img { position: absolute; left: 12px; top: 4px; width: 48px; height: auto; object-fit: contain; }
-.unico-title { margin-top: 0; padding-left: 0; padding-top: 20px; text-align: left; }
+.unico-logo-img { position: absolute; left: 12px; top: 4px; width: 52px; height: auto; object-fit: contain; }
+.unico-title { margin-top: 0; padding-left: 0; padding-top: 22px; text-align: left; }
 .unico-logo { width: 64px; height: 32px; border-radius: 6px; background: #fff; border:2px solid #3D9C34; color:#3D9C34; display:grid; place-items:center; font-weight: 800; }
 .unico-title .line1 { font-weight: 800; }
-.unico-title .line2 { font-size: 12px; color:#6b6b6b; }
+.unico-title .line2 { font-size: 12px; color:black; }
 .unico-title .line3 { font-size: 12px; color:#9a9a9a; }
 
 .unico-acc { margin: 14px 0; background: transparent; border-radius: 0; overflow: visible; }
