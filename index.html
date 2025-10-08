@@ -24,7 +24,11 @@
     .unico-bottom-fill { background: #009765 !important; }
 
     .btn.secondary { background: #0a49b0 !important; }
-    .val-footer .time, .val-footer .locks { color: #003366 !important; }
+    .val-footer { padding-bottom: 20px !important; }
+    .val-footer .time, .val-footer .locks { color: #003366 !important; font-weight: 400 !important; }
+    .val-footer .time { font-size: 17px !important; font-weight: 400 !important; }
+    .val-footer .time span, .val-footer .locks span { font-weight: 400 !important; }
+    .val-footer .time svg { width: 20px !important; height: 20px !important; }
     .val-footer .time svg *, .val-footer .locks svg * { stroke: #0a49b0 !important; }
 
     /* Remove space between divider and Dettagli */
@@ -40,8 +44,12 @@
     /* Reduce gap between validation panel and triangles (second accordion body) */
     .unico-card > details.unico-acc:nth-of-type(2) .acc-body { padding-bottom: 8px !important; }
 
-    /* Speed up triangles */
-    .triangles .tri-row { animation-duration: 0.7s !important; }
+    /* Speed up triangles and position */
+    .triangles { margin-top: -1px !important; }
+    .triangles .tri-row { animation-duration: 0.85s !important; }
+
+    /* Remove bottom margin only from second accordion (Controllo e validazione) */
+    .unico-card > details.unico-acc:nth-of-type(2) { margin-bottom: 0 !important; }
 
     /* Ticket info section styles */
     .ticket-info-section {
@@ -53,15 +61,20 @@
     
     .info-item {
       display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 8px 0;
+      border-bottom: 0;
+      gap: 4px;
+    }
+
+    .info-item.cost-item {
+      flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      padding: 8px 0;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .info-item.cost-item {
       border-bottom: 1px solid #e0e0e0;
       margin-bottom: 8px;
+      padding-top: 12px;
     }
     
     .info-label {
@@ -78,13 +91,14 @@
     
     .cost-value {
       font-weight: 800;
-      font-size: 16px;
+      font-size: 17px;
     }
     
     .details-section {
-      margin-top: 12px;
+      margin-top: 0;
+      padding-top: 8px;
     }
-    
+
     .details-header {
       display: flex;
       justify-content: space-between;
@@ -101,13 +115,17 @@
     .details-toggle {
       background: transparent;
       border: 0;
-      color: #0a49b0;
+      color: #003366;
       font-weight: 600;
       font-size: 14px;
       display: flex;
       align-items: center;
       gap: 4px;
       cursor: pointer;
+    }
+
+    .details-toggle .chevron {
+      color: #000;
     }
     
     .chevron {
@@ -145,9 +163,10 @@
     }
     
     .ticket-codes {
-      margin-top: 16px;
+      margin-top: 0;
+      padding-top: 0;
     }
-    
+
     .code-row {
       display: flex;
       justify-content: space-between;
@@ -163,7 +182,7 @@
     .code-value {
       color: #1a1a1a;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
     }
 
     /* Mobile optimizations for iPhone 13 Pro and similar */
@@ -183,7 +202,7 @@
       }
 
       .unico-logo-img {
-        width: 40px;
+        width: 50px;
       }
       
       .unico-title .line1 {
@@ -208,14 +227,27 @@
       
       .info-item {
         padding: 6px 0;
+        flex-direction: column;
+        align-items: flex-start;
+        border-bottom: 0;
+        gap: 4px;
       }
-      
+
+      .info-item.cost-item {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 8px;
+        padding-top: 12px;
+      }
+
       .info-label, .info-value {
         font-size: 14px;
       }
       
       .cost-value {
-        font-size: 16px;
+        font-size: 17px;
       }
       
       .company-info {
@@ -230,9 +262,23 @@
       .company-address, .company-vat {
         font-size: 13px;
       }
-      
+
+      .details-section {
+        margin-top: 0;
+        padding-top: 8px;
+      }
+
+      .ticket-codes {
+        margin-top: 0;
+        padding-top: 0;
+      }
+
       .code-label, .code-value {
         font-size: 14px;
+      }
+
+      .code-value {
+        font-weight: 400;
       }
       
       .unico-bottombar .btn.secondary {
@@ -299,10 +345,13 @@
     .route {
       font-size: 16px !important;
     }
-    
+
     .valid {
       font-size: 14px !important;
+      font-weight: 400 !important;
     }
+
+    .unico-banner { font-weight: 400 !important; }
     
     .info-label {
       font-size: 15px !important;
@@ -313,7 +362,7 @@
     }
     
     .cost-value {
-      font-size: 18px !important;
+      font-size: 19px !important;
     }
     
     .details-label {
@@ -322,6 +371,11 @@
     
     .details-toggle {
       font-size: 15px !important;
+      color: #003366 !important;
+    }
+
+    .details-toggle .chevron {
+      color: #000 !important;
     }
     
     .company-name {
@@ -338,9 +392,10 @@
     
     .code-value {
       font-size: 15px !important;
+      font-weight: 400 !important;
     }
     
-    .val-footer .time, .val-footer .locks {
+    .val-footer .locks {
       font-size: 14px !important;
     }
     
@@ -371,7 +426,7 @@
         </div>
 
         <details class="unico-acc" open>
-          <summary><span class="sicon">
+          <summary style="color: #000; font-weight: 700;"><span class="sicon">
             <img class="sicon-img" src="id-card.png" alt="Informazioni tessera" />
           </span><span class="slabel">Informazioni tessera</span></summary>
           <div class="acc-body">
@@ -394,7 +449,7 @@
         </details>
 
         <details class="unico-acc" open>
-          <summary><span class="sicon">
+          <summary style="color: #000; font-weight: 700;"><span class="sicon">
             <img class="sicon-img" src="ticket.png" alt="Controllo e validazione" />
           </span><span class="slabel">Controllo e validazione</span></summary>
           <div class="acc-body">
@@ -405,11 +460,11 @@
               <div class="val-footer">
                 <div class="time">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#4a4a4a" stroke-width="1.8"/><path d="M12 7v6l4 2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
-                  <span id="unico-time" style="font-weight: 700;">09:53:10</span>
+                  <span id="unico-time" style="font-weight: 400;">09:53:10</span>
                 </div>
                 <div class="locks">
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10" width="14" height="10" rx="2" stroke="#4a4a4a" stroke-width="1.8"/><path d="M8 10V8a4 4 0 1 1 8 0v2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
-                  <span style="font-weight: 700;">747</span>
+                  <span style="font-weight: 400;">747</span>
                 </div>
               </div>
             </div>
@@ -485,7 +540,7 @@
         var el = document.getElementById('unico-time');
         var d = new Date();
         el.textContent = pad(d.getHours())+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());
-        el.style.fontWeight = '700'; // Mantieni grassetto
+        el.style.fontWeight = '400';
       }
       tick();
       window.unicoClock && clearInterval(window.unicoClock);

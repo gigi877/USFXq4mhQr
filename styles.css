@@ -205,15 +205,15 @@ body {
 
 /* UNICO screen */
 .unico-topbar { height: calc(56px + env(safe-area-inset-top)); background: #3D9C34; color:#fff; position: fixed; top:0; left:0; right:0; display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; padding-top: env(safe-area-inset-top); z-index: 20; box-shadow: none; }
-.unico-topbar .title { font-weight: 800; }
+.unico-topbar .title { font-weight: 800; font-size: 18px}
 .content.unico { top: calc(56px + env(safe-area-inset-top)); bottom: calc(72px + var(--safe-bottom)); overflow: auto; background: #3D9C34; }
 .content.unico { scrollbar-width: none; }
 .content.unico::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
-.unico-card { margin: 16px; background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: none; border: 0; }
+.unico-card { margin: 16px; background: #ffffff; border-radius: 10px; padding: 16px; box-shadow: none; border: 1px solid #e0e0e0; }
 .unico-card-header { background:#fff; border-radius: 10px; padding: 12px 0; position: relative; display:block; box-shadow: none; border: 0; }
 .unico-logo-img { position: absolute; left: 12px; top: 4px; width: 52px; height: auto; object-fit: contain; }
-.unico-title { margin-top: 0; padding-left: 0; padding-top: 22px; text-align: left; }
+.unico-title { margin-top: 0; padding-left: 0; padding-top: 20px; text-align: left; }
 .unico-logo { width: 64px; height: 32px; border-radius: 6px; background: #fff; border:2px solid #3D9C34; color:#3D9C34; display:grid; place-items:center; font-weight: 800; }
 .unico-title .line1 { font-weight: 800; }
 .unico-title .line2 { font-size: 12px; color:black; }
@@ -232,7 +232,7 @@ body {
   content: '';
   width: 16px;
   height: 16px;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23777'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23000'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M19 9l-7 7-7-7'%3e%3c/path%3e%3c/svg%3e");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -243,8 +243,8 @@ body {
 }
 .unico-acc .acc-body { padding: 18px 16px; border: 1px solid #c8c8c8; border-top: 0; background: #f2f3f4; border-radius: 0 0 10px 10px; }
 .unico-acc:first-of-type .acc-body { padding-top: 28px; padding-bottom: 28px; }
-.triangles { margin: 0; padding: 0; background: transparent; border-radius: 0; overflow: hidden; }
-.triangles .tri-row { height: 14px; background-repeat: repeat-x; background-size: 56px 14px; animation: tri-scroll 1s linear infinite; will-change: background-position; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.triangles { margin: 0; padding: 0; background: transparent; border-radius: 0; overflow: hidden; margin-top: -1px; }
+.triangles .tri-row { height: 14px; background-repeat: repeat-x; background-size: 56px 14px; animation: tri-scroll 0.85s linear infinite; will-change: background-position; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 /* Top row: dark then light */
 .triangles .tri-row.r1 { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23bdbdbd'/><polygon points='28,14 42,0 56,14' fill='%23e6e6e6'/></svg>"); }
 /* Middle row: light then dark */
@@ -260,7 +260,8 @@ body {
 .qr-box { width: 180px; height: 180px; display:grid; place-items:center; }
 .qr-box img { width: 100%; height: 100%; object-fit: contain; display:block; }
 .val-footer { width: 100%; display:flex; align-items:center; justify-content: space-between; }
-.val-footer .time { display:inline-flex; align-items:center; gap:6px; color:#1f5fe0; font-weight: 400; }
+.val-footer .time { display:inline-flex; align-items:center; gap:6px; color:#1f5fe0; font-weight: 400; font-size: 17px; }
+.val-footer .time svg { width: 20px; height: 20px; }
 .val-footer .locks { display:inline-flex; align-items:center; gap:6px; color:#1f5fe0; font-weight:400; }
 .val-footer .time svg *,
 .val-footer .locks svg * { stroke: #1f5fe0 !important; }
@@ -285,6 +286,7 @@ body {
   padding: 16px 14px;
   font-weight: 600;
   text-align: left;
+  border: 1px solid #e0e0e0;
 }
 .unico-banner .route {
   margin-bottom: 8px;
