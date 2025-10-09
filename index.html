@@ -46,7 +46,7 @@
 
     /* Speed up triangles and position */
     .triangles { margin-top: -1px !important; }
-    .triangles .tri-row { animation-duration: 0.85s !important; }
+    .triangles .tri-row { animation-duration: 0.7s !important; }
 
     /* Remove bottom margin only from second accordion (Controllo e validazione) */
     .unico-card > details.unico-acc:nth-of-type(2) { margin-bottom: 0 !important; }
@@ -54,7 +54,7 @@
     /* Ticket info section styles */
     .ticket-info-section {
       background: #fff;
-      border-radius: 10px;
+      border-radius: 8px;
       margin-top: 10px;
       padding: 14px 0;
     }
@@ -223,6 +223,7 @@
       .ticket-info-section {
         padding: 12px 0;
         margin: 8px 0;
+        border-radius: 8px;
       }
       
       .info-item {
@@ -399,7 +400,10 @@
     .val-footer .locks {
       font-size: 14px !important;
     }
-    
+
+    /* Porta la label "Costo" alla stessa dimensione del valore */
+    .info-item.cost-item .info-label { font-size: 19px !important; }
+
     .unico-bottombar .btn.secondary .btn-label {
       font-size: 16px !important;
       font-weight: 600;
