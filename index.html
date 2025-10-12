@@ -2,11 +2,11 @@
 <html lang="it">
 <head>
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#009765">
+    <meta name="theme-color" content="#2e8b57">
     <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="UNICO Campania" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
@@ -26,9 +26,9 @@
     .btn.secondary { background: #0a49b0 !important; }
     .val-footer { padding-bottom: 20px !important; }
     .val-footer .time, .val-footer .locks { color: #003366 !important; font-weight: 400 !important; }
-    .val-footer .time { font-size: 17px !important; font-weight: 400 !important; }
+    .val-footer .time { font-size: 18px !important; font-weight: 400 !important; }
     .val-footer .time span, .val-footer .locks span { font-weight: 450 !important; }
-    .val-footer .time svg { width: 20px !important; height: 20px !important; }
+    .val-footer .time svg { width: 23px !important; height: 23px !important; }
     .val-footer .time svg *, .val-footer .locks svg * { stroke: #0a49b0 !important; }
 
     /* Remove space between divider and Dettagli */
@@ -56,7 +56,6 @@
       background: #fff;
       border-radius: 8px;
       margin-top: 10px;
-      padding: 14px 0;
     }
     
     .info-item {
@@ -90,7 +89,7 @@
     }
     
     .cost-value {
-      font-weight: 800;
+      font-weight: 750;
       font-size: 17px;
     }
     
@@ -221,13 +220,12 @@
       }
       
       .ticket-info-section {
-        padding: 12px 0;
         margin: 8px 0;
         border-radius: 8px;
       }
       
       .info-item {
-        padding: 6px 0;
+        padding: 0 0 0 6px;
         flex-direction: column;
         align-items: flex-start;
         border-bottom: 0;
@@ -344,7 +342,7 @@
     }
     
     .route {
-      font-size: 16px !important;
+      font-size: 14px !important;
     }
 
     .valid {
@@ -408,6 +406,31 @@
       font-size: 16px !important;
       font-weight: 600;
     }
+
+    .clock-icon {
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+    }
+
+    .lock-icon {
+      width: 15px;
+      height: 15px;
+      object-fit: contain;
+    }
+
+    /* Colora le icone con #003366 */
+    .sicon-img {
+      filter: brightness(0) saturate(100%) invert(14%) sepia(89%) saturate(1829%) hue-rotate(192deg) brightness(95%) contrast(101%);
+    }
+
+    .clock-icon {
+      filter: brightness(0) saturate(100%) invert(14%) sepia(89%) saturate(1829%) hue-rotate(192deg) brightness(95%) contrast(101%);
+    }
+
+    .lock-icon {
+      filter: brightness(0) saturate(100%) invert(14%) sepia(89%) saturate(1829%) hue-rotate(192deg) brightness(95%) contrast(101%);
+    }
   </style>
 </head>
 <body onselectstart="return false;" ondragstart="return false;">
@@ -464,11 +487,11 @@
               </div>
               <div class="val-footer">
                 <div class="time">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="#4a4a4a" stroke-width="1.8"/><path d="M12 7v6l4 2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <img src="clock.png" alt="Orologio" class="clock-icon" />
                   <span id="unico-time" style="font-weight: 400;">09:53:10</span>
                 </div>
                 <div class="locks">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="10" width="14" height="10" rx="2" stroke="#4a4a4a" stroke-width="1.8"/><path d="M8 10V8a4 4 0 1 1 8 0v2" stroke="#4a4a4a" stroke-width="1.8" stroke-linecap="round"/></svg>
+                  <img src="lock.png" alt="Lucchetto" class="lock-icon" />
                   <span style="font-weight: 400;">747</span>
                 </div>
               </div>
