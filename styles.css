@@ -244,21 +244,33 @@ body {
 .unico-acc .acc-body { padding: 18px 16px; border: 1px solid #c8c8c8; border-top: 0; background: #f2f3f4; border-radius: 0 0 8px 8px; }
 .unico-acc:first-of-type .acc-body { padding-top: 28px; padding-bottom: 12px; }
 .triangles { margin: 0; padding: 0; background: transparent; border-radius: 0; overflow: hidden; }
-.triangles .tri-row { height: 16px; background-repeat: repeat-x; background-size: 64px 16px; animation: tri-scroll 0.7s linear infinite; will-change: background-position; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.triangles .tri-row { height: 16px; background-repeat: repeat-x; background-size: 64px 16px; will-change: background-position; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 /* Top row: dark then light */
-.triangles .tri-row.r1 { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23bdbdbd'/><polygon points='28,14 42,0 56,14' fill='%23e6e6e6'/></svg>"); }
-/* Middle row: light then dark - sfasata di 32px (metà del pattern) */
-.triangles .tri-row.r2 { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23e6e6e6'/><polygon points='28,14 42,0 56,14' fill='%23bdbdbd'/></svg>"); animation: tri-scroll-offset 0.7s linear infinite; }
+.triangles .tri-row.r1 { 
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23bdbdbd'/><polygon points='28,14 42,0 56,14' fill='%23e6e6e6'/></svg>"); 
+  animation: tri-scroll 0.7s linear infinite;
+}
+/* Middle row: light then dark - offset per sfasare i triangoli */
+.triangles .tri-row.r2 { 
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23e6e6e6'/><polygon points='28,14 42,0 56,14' fill='%23bdbdbd'/></svg>"); 
+  animation: tri-scroll-offset 0.7s linear infinite;
+}
 /* Bottom row: dark then light */
-.triangles .tri-row.r3 { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23bdbdbd'/><polygon points='28,14 42,0 56,14' fill='%23e6e6e6'/></svg>"); }
+.triangles .tri-row.r3 { 
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' shape-rendering='crispEdges' width='56' height='14' viewBox='0 0 56 14'><polygon points='0,14 14,0 28,14' fill='%23bdbdbd'/><polygon points='28,14 42,0 56,14' fill='%23e6e6e6'/></svg>"); 
+  animation: tri-scroll 0.7s linear infinite;
+}
 
+/* Animazione per la prima e terza riga */
 @keyframes tri-scroll {
   0% { background-position: 0 0; }
   100% { background-position: 64px 0; }
 }
+
+/* Animazione sfasata per la seconda riga - le punte toccano i bordi dei triangoli sopra/sotto */
 @keyframes tri-scroll-offset {
-  0% { background-position: 32px 0; }
-  100% { background-position: 96px 0; }
+  0% { background-position: -16px 0; }
+  100% { background-position: 48px 0; }
 }
 .validation-panel { background: transparent; border:0; border-radius:8px; padding:12px 0px 12px 0px; display:grid; justify-items:center; gap:40px; }
 .qr-box { width: 180px; height: 180px; display:grid; place-items:center; }
