@@ -206,7 +206,7 @@ body {
 /* UNICO screen */
 .unico-topbar { height: calc(56px + env(safe-area-inset-top)); background: #3D9C34; color:#fff; position: fixed; top:0; left:0; right:0; display:grid; grid-template-columns: 1fr auto 1fr; align-items:center; padding-top: env(safe-area-inset-top); z-index: 20; box-shadow: none; }
 .unico-topbar .title { font-weight: 800; font-size: 18px}
-.content.unico { top: calc(56px + env(safe-area-inset-top)); bottom: calc(72px + var(--safe-bottom)); overflow: auto; background: #3D9C34; }
+.content.unico { top: calc(56px + env(safe-area-inset-top)); bottom: calc(40px + var(--safe-bottom)); overflow: auto; background: #3D9C34; }
 .content.unico { scrollbar-width: none; }
 .content.unico::-webkit-scrollbar { width: 0; height: 0; display: none; }
 
@@ -340,12 +340,11 @@ body {
 /* UNICO fixed bottom action bar */
 .unico-bottombar {
   position: fixed; left: 0; right: 0; bottom: 0;
-  height: calc(76px + var(--safe-bottom));
+  height: calc(40px + var(--safe-bottom));
   background: #ffffff; box-shadow: 0 -1px 0 rgba(0,0,0,0.12);
   display: grid; align-items: end; justify-items: center; z-index: 12;
   padding-bottom: var(--safe-bottom);
 }
-.unico-bottombar .btn.secondary { width: calc(100% - 32px); max-width: 520px; justify-content: center; }
 
 
 /* Scrollbar subtle */
