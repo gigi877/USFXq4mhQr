@@ -62,7 +62,6 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 8px 0;
       border-bottom: 0;
       gap: 4px;
     }
@@ -71,9 +70,9 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid #e0e0e0;
-      margin-bottom: 8px;
-      padding-top: 12px;
+      border-bottom: 1px solid #6b6b6b;
+      padding-bottom: 8px;
+      padding-top: 18px;
     }
     
     .info-label {
@@ -225,21 +224,12 @@
       }
       
       .info-item {
-        padding: 0 0 0 6px;
         flex-direction: column;
         align-items: flex-start;
         border-bottom: 0;
         gap: 4px;
       }
 
-      .info-item.cost-item {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        border-bottom: 1px solid #e0e0e0;
-        margin-bottom: 8px;
-        padding-top: 12px;
-      }
 
       .info-label, .info-value {
         font-size: 14px;
@@ -448,33 +438,11 @@
         <div class="unico-card-header">
           <img class="unico-logo-img" src="unicoC.png" alt="UNICO" />
           <div class="unico-title">
-            <div class="line1">ABB.STU- INT. UNICOCAMPANIA</div>
-            <div class="line2">ABB INTEGRATO STUDENTI REGIONE CAMPANIA TIC-SG-NA20-00</div>
+            <div class="line1">UNICO - AC 7 MENSILE INTEGRATO</div>
+            <div class="line2">L'abbonamento va attivato entro il giorno 15 del mese di utilizzo. Valido fino alle ore 24:00 dell'ultimo giorno del mese solare di attivazione</div>
           </div>
         </div>
 
-        <details class="unico-acc" open>
-          <summary style="color: #000; font-weight: 700;"><span class="sicon">
-            <img class="sicon-img" src="id-card.png" alt="Informazioni tessera" />
-          </span><span class="slabel">Informazioni tessera</span></summary>
-          <div class="acc-body">
-            <div class="id-card">
-              <img class="avatar-img" src="IMG_2110.jpg" alt="Foto tessera" />
-              <div class="id-lines">
-                <div class="id-name" style="font-size:12px">ALESSIO DEL SORBO</div>
-                <div class="id-cf">DLSLSS04S25I234Y</div>
-                <div class="id-field">
-                  <div class="label">Tesserino n.</div>
-                  <div class="value strong">2000718932</div>
-                </div>
-                <div class="id-field">
-                  <div class="label">Scadenza:</div>
-                  <div class="value">31/07/2026</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </details>
 
         <details class="unico-acc" open>
           <summary style="color: #000; font-weight: 700;"><span class="sicon">
@@ -506,19 +474,21 @@
         </div>
 
         <div class="unico-banner">
-          <div class="route">Da <strong>SANTA MARIA CAPUA VETERE</strong> a <strong>FISCIANO</strong></div>
-          <div class="valid">Valido dal <strong>19/09/2025</strong> a <strong>01/08/2026</strong></div>
+          <div class="route">Da <strong><C>CASERTA</C></strong> a <strong>FISCIANO</strong></div>
+          <div class="valid">Tempo restante: <span id="countdown"></span></div>
+          <div class="activated">Attivato il: <strong><span id="activation-date"></span> - 07:03</strong></div>
+
         </div>
         
         <div class="ticket-info-section">
           <div class="info-item">
             <div class="info-label">Emesso il:</div>
-            <div class="info-value">19/09/2025 - 18:59</div>
+            <div class="info-value" id="emission-date"></div>
           </div>
           
           <div class="info-item cost-item">
             <div class="info-label">Costo</div>
-            <div class="info-value cost-value">0,00 €</div>
+            <div class="info-value cost-value">98,00 €</div>
           </div>
           
           <div class="details-section">
@@ -573,6 +543,39 @@
       tick();
       window.unicoClock && clearInterval(window.unicoClock);
       window.unicoClock = setInterval(tick, 1000);
+
+      // Countdown to end of month
+      function updateCountdown(){
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth();
+        var endOfMonth = new Date(year, month + 1, 0, 23, 59, 59, 999);
+        var diff = endOfMonth - now;
+        
+        if (diff <= 0) {
+          document.getElementById('countdown').innerHTML = '<strong>0</strong> gg <strong>0</strong> h <strong>0</strong> min';
+          return;
+        }
+        
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        document.getElementById('countdown').innerHTML = 
+          '<strong>' + days + ' gg ' + hours + ' h ' + minutes + ' min </strong>'  ;
+      }
+      updateCountdown();
+      window.countdownInterval && clearInterval(window.countdownInterval);
+      window.countdownInterval = setInterval(updateCountdown, 60000); // Update every minute
+
+      // Set activation date to first day of current month
+      var now = new Date();
+      var firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
+      var day = pad(firstDay.getDate());
+      var month = pad(firstDay.getMonth() + 1);
+      var year = firstDay.getFullYear();
+      document.getElementById('activation-date').textContent = day + '/' + month + '/' + year;
+      document.getElementById('emission-date').textContent = day + '/' + month + '/' + year + ' - 07:02';
 
       // Toggle 'Leggi tutto' details panel
       var btn = document.getElementById('details-toggle');

@@ -212,14 +212,14 @@ body {
 
 .unico-card { margin: 16px; background: #ffffff; border-radius: 8px; padding: 16px; box-shadow: none; border: 1px solid #e0e0e0; }
 .unico-card-header { background:#fff; border-radius: 8px; padding: 12px 0; position: relative; display:block; box-shadow: none; border: 0; }
-.unico-logo-img { position: absolute; margin-top: 2px; left: 12px; top: 4px; width: 52px; height: auto; object-fit: contain; }
-.unico-title { margin-top: 2px; padding-left: 0; padding-top: 20px; text-align: left; }
+.unico-logo-img { position: absolute; margin-top: 3px; left: 12px; top: 4px; width: 52px; height: auto; object-fit: contain; }
+.unico-title { margin-top: 4px; padding-left: 0; padding-top: 20px; text-align: left; }
 .unico-logo { width: 64px; height: 32px; border-radius: 6px; background: #fff; border:2px solid #3D9C34; color:#3D9C34; display:grid; place-items:center; font-weight: 800; }
 .unico-title .line1 { font-weight: 800; }
 .unico-title .line2 { font-size: 12px; color:black; }
 .unico-title .line3 { font-size: 12px; color:#9a9a9a; }
 
-.unico-acc { margin: 14px 0; background: transparent; border-radius: 0; overflow: visible; }
+.unico-acc { margin: 14px 0 0 0; background: transparent; border-radius: 0; overflow: visible; }
 .unico-acc:first-of-type { margin-top: 6px; }
 .unico-acc summary { list-style: none; cursor: pointer; padding: 14px 16px; font-weight: 600; display:flex; align-items:center; justify-content: space-between; background: #f2f3f4; border-radius: 8px; border: 1px solid #c8c8c8; }
 .unico-acc[open] summary { border-bottom-left-radius: 0; border-bottom-right-radius: 0; border-bottom: 0; }
@@ -242,7 +242,7 @@ body {
   transform: rotate(180deg);
 }
 .unico-acc .acc-body { padding: 18px 16px; border: 1px solid #c8c8c8; border-top: 0; background: #f2f3f4; border-radius: 0 0 8px 8px; }
-.unico-acc:first-of-type .acc-body { padding-top: 28px; padding-bottom: 48px; }
+.unico-acc:first-of-type .acc-body { padding-top: 28px; padding-bottom: 12px; }
 .triangles { margin: 0; padding: 0; background: transparent; border-radius: 0; overflow: hidden; }
 .triangles .tri-row { height: 16px; background-repeat: repeat-x; background-size: 64px 16px; animation: tri-scroll 0.7s linear infinite; will-change: background-position; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
 /* Top row: dark then light */
@@ -283,18 +283,18 @@ body {
   background: #3D9C34;
   color: #fff;
   border-radius: 8px;
-  padding: 16px 14px;
+  padding: 10px 12px 14px 12px;
   font-weight: 600;
   text-align: left;
   border: 1px solid #e0e0e0;
 }
 .unico-banner .route {
-  margin-bottom: 8px;
   line-height: 1.4;
 }
 .unico-banner .valid {
   font-weight: 700;
   line-height: 1.3;
+  margin-bottom: 8px;
 }
 
 .unico-meta { background:#fff; border-radius: 8px; margin-top: 10px; padding: 10px 14px; }
