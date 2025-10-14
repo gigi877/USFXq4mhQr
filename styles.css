@@ -215,7 +215,7 @@ body {
 .unico-logo-img { position: absolute; margin-top: 3px; left: 12px; top: 4px; width: 52px; height: auto; object-fit: contain; }
 .unico-title { margin-top: 4px; padding-left: 0; padding-top: 20px; text-align: left; }
 .unico-logo { width: 64px; height: 32px; border-radius: 6px; background: #fff; border:2px solid #3D9C34; color:#3D9C34; display:grid; place-items:center; font-weight: 800; }
-.unico-title .line1 { font-weight: 800; }
+.unico-title .line1 { font-weight: 750; }
 .unico-title .line2 { font-size: 12px; color:black; }
 .unico-title .line3 { font-size: 12px; color:#9a9a9a; }
 
